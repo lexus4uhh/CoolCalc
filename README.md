@@ -1,82 +1,68 @@
 # CoolCalc
 
-A minimalist popup calculator with a global hotkey. Quickly perform calculations from anywhere without opening a full application.
-
-![Demo](assets/example_rec.gif)
+A minimal popup calculator with a global hotkey for quick, distraction-free calculations.
 
 ## Features
 
-* Instant access via global hotkey **Ctrl + Alt**
-* Supports math expressions (`sin`, `cos`, `sqrt`, etc.)
-* Press **Enter** to evaluate expressions
-* Always on top of other windows
-* Minimalist, translucent UI
+* Toggle with **Ctrl + Alt**
+* Supports standard math functions (`sin`, `cos`, `sqrt`, etc.)
+* Instant evaluation on Enter
+* Always-on-top window
+* Simple UI with customization commands
 * Close with **Esc**
 
 ## Installation
 
-### 1. Clone the repository
-
 ```bash
-git clone https://github.com/your-username/CoolCalc.git
+git clone https://github.com/lexusuhh/CoolCalc.git
 cd CoolCalc
-```
-
-### 2. Install dependencies
-
-```bash
 pip install PyQt6 pynput
 ```
 
 ## Run
 
 ```bash
-python main.py
+python app.py
 ```
 
-After launching, the calculator runs in the background.
+The app runs in the background. Press **Ctrl + Alt** to show or hide it.
 
-Press **Ctrl + Alt** to toggle the window.
+## Usage
 
-## Example expressions
+Examples:
 
 ```
 2 + 2
 sqrt(16)
 sin(pi / 2)
-log(10)
 3^3
 ```
 
-## Security
-
-This project uses `eval` for calculations, but:
-
-* Python built-in functions are disabled
-* Only functions from the `math` module are allowed
-
-Still, avoid entering untrusted input.
-
-## Project structure
+## Commands
 
 ```
-CoolCalc/
-├── assets/
-│   └── example_rec.gif
-├── LICENSE
-├── main.py
-└── README.md
+set font size
+/font 16
+/font reset
+
+set window size
+/size 300 80
+/size ~ 100
+/size reset
+
+set window position
+/pos 500 200
+/pos 300 ~
+/pos reset
+
+set theme
+/theme dark
+/theme light
 ```
-
-## Requirements
-
-* Python 3.9+
-* PyQt6
-* pynput
-
 ## Ideas for improvement
 
-* Calculation history
-* Custom hotkeys
-* Themes / UI customization
+* More commands (for example: custom hotkeys)
+* Calculation/command history
 * Variable support
+* Representation tools (different for approx. and exact answer)
+* Add more themes
