@@ -1,0 +1,16 @@
+# ThemeName,BackgroundColor,BorderColor,TextColor
+light,white,#cccccc,black
+dark,#1e1e1e,#3c3c3c,white
+solarized,#fdf6e3,#93a1a1,#657b83
+neon,#0f0f2f,#00ffcc,#00ff99
+pastel,#f7f1ff,#d0bfff,#6b5b95
+midnight,#0a0a23,#1f2a44,#e6e6ff
+forest,#0e2f1c,#2e8b57,#d7f5e6
+sunset,#2b1b17,#ff7e5f,#ffd9c7
+ocean,#0b3d91,#1ca3ec,#e0f7ff
+coffee,#3b2f2f,#6f4e37,#f5e6d3
+rose,#fff0f5,#ffb6c1,#8b3a3a
+slate,#2f4f4f,#708090,#e6eeee
+amber,#1a1400,#ffbf00,#ffe9a3
+lavender,#f3e8ff,#c084fc,#4c1d95
+ice,#e0f7fa,#4dd0e1,#006064

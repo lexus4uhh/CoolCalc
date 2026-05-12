@@ -1,4 +1,10 @@
 import math
+with open('themes.txt', 'r') as f:
+    THEMES = {}
+    for line in f:
+        if line.strip() and not line.startswith("#"):
+            name, bg, border, text = line.strip().split(",")
+            THEMES[name] = {"background": bg, "border": border, "text": text}
 
 class AppLogic:
     def __init__(self, window):
@@ -58,14 +64,12 @@ class AppLogic:
                 return f"Position set to ({x}, {y})"
             
             elif cmd == "theme" and args:
-                if args[0] == "dark":
-                    self.window.update_colors(bg="#2d2d2d", border="#555555", text="#ffffff")
-                    return "Dark theme applied"
-                elif args[0] == "light":
-                    self.window.update_colors(bg="#f0f0f0", border="#767676", text="#333333")
-                    return "Light theme applied"
-                else:
-                    return "Unknown theme"
+                try:
+                    theme = THEMES[args[0]]
+                    self.window.update_colors(theme['background'], theme['border'], theme['text'])
+                    return f"Theme set to {args[0]}"
+                except KeyError:
+                    return f"Theme '{args[0]}' not found"
 
             return "Unknown command"
         except Exception as e:

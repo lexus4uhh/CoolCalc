@@ -38,7 +38,7 @@ sin(pi / 2)
 3^3
 ```
 
-## Commands
+## Commands (new)
 
 ```
 set font size
@@ -59,10 +59,14 @@ set theme
 /theme dark
 /theme light
 ```
+
+## Themes (new)
+
+Now you can change themes easilly by changing file `themes.txt`. It is actually a table with columns: Theme name, Background color, Border Color and Text color. All colors are in HEX.
+
 ## Ideas for improvement
 
 * More commands (for example: custom hotkeys)
 * Calculation/command history
 * Variable support
 * Representation tools (different for approx. and exact answer)
-* Add more themes
