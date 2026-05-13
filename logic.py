@@ -1,4 +1,5 @@
-import math
+import sympy as sp
+
 with open('themes.txt', 'r') as f:
     THEMES = {}
     for line in f:
@@ -9,7 +10,10 @@ with open('themes.txt', 'r') as f:
 class AppLogic:
     def __init__(self, window):
         self.window = window
-        self.safe_dict = {k: v for k, v in math.__dict__.items() if not k.startswith("__")}
+        self.memory = []
+        self.history = []
+        self.history_idx = -1
+        self.mode = "exact"
 
     def process_input(self, text):
         text = text.strip()
@@ -22,12 +26,45 @@ class AppLogic:
         return self.calculate(text)
 
     def calculate(self, expression):
-        expr = expression.replace("^", "**")
         try:
-            result = eval(expr, {"__builtins__": {}}, self.safe_dict)
+            expr = expression.replace("^", "**")
+            sym_expr = sp.sympify(expr)
+
+            if self.mode == "exact":
+                result = sp.nsimplify(sym_expr)
+            else:
+                result = f"{float(sym_expr.evalf()):.10g}"
+
+            self.memory.append(result)
+            self.history.append(expression)
+            self.history_idx = -1
+
             return str(result)
+
         except Exception:
-            return "Error"
+            return f"Error"
+    
+    def mem_previous(self):
+        if not self.history:
+            return ""
+
+        if self.history_idx == -1:
+            self.history_idx = len(self.history) - 1
+        elif self.history_idx > 0:
+            self.history_idx -= 1
+
+        return self.history[self.history_idx]
+
+    def mem_next(self):
+        if not self.history or self.history_idx == -1:
+            return ""
+
+        if self.history_idx < len(self.history) - 1:
+            self.history_idx += 1
+            return self.history[self.history_idx]
+
+        self.history_idx = -1
+        return ""
 
     def execute_command(self, command_text):
         parts = command_text.split()
@@ -70,6 +107,10 @@ class AppLogic:
                     return f"Theme set to {args[0]}"
                 except KeyError:
                     return f"Theme '{args[0]}' not found"
+            
+            elif cmd == "mode" and args:
+                    self.mode = args[0]
+                    return f"Mode set to {self.mode}"
 
             return "Unknown command"
         except Exception as e:

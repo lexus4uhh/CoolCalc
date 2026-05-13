@@ -17,6 +17,8 @@ class CalculatorWindow(QMainWindow):
             "border": "#555555",
             "text": "#ffffff"
         }
+
+        self.prev_text = ""
         
         self.setWindowFlags(
             Qt.WindowType.FramelessWindowHint |
@@ -73,12 +75,30 @@ class CalculatorWindow(QMainWindow):
 
     def handle_execution(self):
         result = self.logic.process_input(self.entry.text())
+        self.prev_text = self.entry.text()
         self.entry.setText(result)
         self.entry.selectAll()
 
     def keyPressEvent(self, event):
         if event.key() == Qt.Key.Key_Escape:
             self.hide()
+        elif event.key() == Qt.Key.Key_Up:
+            previous = self.logic.mem_previous()
+            if previous != "":
+                self.entry.setText(previous)
+                self.entry.selectAll()
+        elif event.key() == Qt.Key.Key_Down:
+            next_entry = self.logic.mem_next()
+            self.entry.setText(next_entry)
+            self.entry.selectAll()
+        elif event.key() == Qt.Key.Key_Alt:
+            self.logic.mode = "exact" if self.logic.mode == "default" else "default"
+            result = self.logic.process_input(self.entry.text())
+            self.prev_text = self.entry.text()
+            self.entry.setText(result)
+            self.entry.selectAll()
+        else:
+            super().keyPressEvent(event)
 
     def toggle_visibility(self):
         if self.isVisible():
