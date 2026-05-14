@@ -1,123 +1,46 @@
 # CoolCalc
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![Python 3.9+](https://img.shields.io/badge/Python-3.9%2B-blue.svg)](https://www.python.org/downloads/)
-
-A minimal popup calculator with a global hotkey for quick, distraction-free calculations.
-
-## Table of Contents
-
-- [Features](#features)
-- [Prerequisites](#prerequisites)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Configuration](#configuration)
-- [Commands](#commands)
-- [Themes](#themes)
-- [Keyboard Shortcuts](#keyboard-shortcuts)
-- [License](#license)
+A lightweight, always-on-top calculator application built with PyQt6 and SymPy. Perform calculations, solve equations, and customize the interface with themes and commands.
 
 ## Features
 
-- **Global Hotkey**: `Alt + Ctrl` to toggle calculator anywhere
-- **Customizable Themes**: 15 pre-built color themes
-- **Smart Calculation**: Supports symbolic math via SymPy
-- **Command System**: Customize font, size, position, and more
-- **History Navigation**: Use `Up/Down` arrows to navigate previous expressions
-- **Floating Window**: Always-on-top, frameless design
-
-## Prerequisites
-
-- Python 3.9 or higher
-- PyQt6
-- SymPy
-- pynput
+- **Mathematical Expressions**: Evaluate complex expressions with support for trigonometric functions, logarithms, etc.
+- **Equation Solving**: Solve single equations and systems of equations.
+- **Inequality Solving**: Handle inequalities with SymPy.
+- **History Navigation**: Use arrow keys to navigate through previous inputs.
+- **Commands**: Customize font size, window size, position, theme, and calculation mode.
+- **Themes**: Multiple built-in themes for personalization.
+- **Hotkey Toggle**: Press `Alt + Ctrl` to show/hide the calculator.
+- **Mode Toggle**: Press `Alt` to switch between exact and approximate results.
 
 ## Installation
 
-1. **Clone the repository**:
-   ```bash
-   git clone https://github.com/yourusername/CoolCalc.git
-   cd CoolCalc
+1. Ensure you have Python 3.8+ installed.
+2. Install dependencies:
    ```
-
-2. **Install dependencies**:
-   ```bash
-   pip install -r requirements.txt
+   pip install PyQt6 sympy pynput
    ```
-
-3. **Run the application**:
-   ```bash
+3. Clone or download the repository.
+4. Run the application:
+   ```
    python app.py
    ```
 
 ## Usage
 
-### Basic Calculation
+- **Input Expressions**: Type mathematical expressions, equations (e.g., `x^2 + 2x - 3 = 0`), inequalities, or systems (e.g., `x + y = 5; x - y = 1`).
+- **Commands**: Start with `/` followed by the command, e.g., `/theme dark`, `/font 14`, `/size 300 80`.
+- **Navigation**: Use `Up`/`Down` arrows for history, `Alt` to toggle mode, `Escape` to hide.
+- **Themes**: Edit `themes.txt` to add custom themes.
 
-1. Press `Alt + Ctrl` to open the calculator
-2. Type a mathematical expression:
-   ```
-   2 + 2
-   3.14 * 2^2
-   sqrt(16)
-   sin(pi/2)
-   ```
-3. Press `Enter` to calculate
-4. Press `Esc` to hide the window
+## Commands
 
-### Quick Examples
-
-| Expression | Result |
-|-----------|--------|
-| `2 + 2` | `4` |
-| `10 ^ 2` | `100` |
-| `sqrt(25)` | `5` |
-| `pi * 2` | `2*pi` (exact) or `6.28318...` (default) |
-
-## Configuration
-
-### Commands
-
-Use the `/command` syntax to configure the calculator on-the-fly:
-
-| Command | Syntax | Example |
-|---------|--------|---------|
-| **Font Size** | `/font <size \| reset>` | `/font 14` or `/font reset` |
-| **Window Size** | `/size <width> <height>` | `/size 300 80` or `/size ~ 100` |
-| **Position** | `/pos <x> <y>` | `/pos 0 0` or `/pos ~ 200` |
-| **Theme** | `/theme <name>` | `/theme neon` |
-| **Mode** | `/mode <exact \| default>` | `/mode exact` |
-
-*Use `~` to keep current value when resizing or repositioning.*
+- `/font <size>` or `/font reset`: Set font size.
+- `/size <width> <height>` or `/size reset`: Resize window.
+- `/pos <x> <y>` or `/pos reset`: Move window position.
+- `/theme <name>`: Apply a theme from `themes.txt`.
+- `/mode <exact|default>`: Set calculation mode.
 
 ## Themes
 
-Available themes are defined in `themes.txt`. Current options:
-
-- `light` – Light gray background
-- `dark` – Dark with subtle borders
-- `solarized` – Solarized light
-- `neon` – Cyberpunk neon
-- `pastel` – Soft pastels
-- `midnight` – Deep blue night
-- `forest` – Green forest theme
-- `sunset` – Warm orange/brown
-- `ocean` – Cool blue
-- `coffee` – Brown tones
-- `rose` – Pink vintage
-- `slate` – Cool grays
-- `amber` – Golden tones
-- `lavender` – Purple soft
-- `ice` – Cyan ice
-
-## Keyboard Shortcuts
-
-| Key | Action |
-|-----|--------|
-| `Alt + Ctrl` | Toggle calculator visibility |
-| `Enter` | Calculate expression |
-| `Esc` | Hide calculator |
-| `Up Arrow` | Previous history entry |
-| `Down Arrow` | Next history entry |
-| `Alt` | Toggle between exact and default mode |
+Themes are defined in `themes.txt`. Each line: `Name,Background,Border,Text`.
