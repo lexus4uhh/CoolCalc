@@ -2,7 +2,7 @@ import sys
 from PyQt6.QtWidgets import QApplication, QMainWindow, QLineEdit, QVBoxLayout, QWidget
 from PyQt6.QtCore import Qt, pyqtSignal, QObject
 from pynput import keyboard
-from logic import AppLogic
+from app.logic import AppLogic
 
 class SignalBridge(QObject):
     toggle_signal = pyqtSignal()
